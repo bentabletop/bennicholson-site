@@ -1,17 +1,36 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
+<BaseLayout title="Ben Nicholson" description="Portfolio" currentPath="/">
+<section class="hero">
+<div class="kicker"><span class="dot" aria-hidden="true"></span><span>Portfolio</span></div>
+<h1>Film writing, criticism, and projects.</h1>
+<p class="lede">
+Ben Nicholson is a writer, curator, and moderator specialising in film and artists’ moving image.
+</p>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+
+<div class="grid" role="list">
+<a class="card" role="listitem" href="/writing">
+<h2>Writing</h2>
+<p>Selected pieces + full bibliography in one place.</p>
+<span class="pill">Explore <span class="chev">→</span></span>
+</a>
+<a class="card" role="listitem" href="/videos">
+<h2>Videos</h2>
+<p>Video essays and talks.</p>
+<span class="pill">Watch <span class="chev">→</span></span>
+</a>
+<a class="card" role="listitem" href="/projects">
+<h2>Projects</h2>
+<p>Festivals, collaborations, and other work.</p>
+<span class="pill">Browse <span class="chev">→</span></span>
+</a>
+<a class="card" role="listitem" href="/about">
+<h2>About</h2>
+<p>Bio, contact, and links.</p>
+<span class="pill">Read <span class="chev">→</span></span>
+</a>
+</div>
+</section>
+</BaseLayout>

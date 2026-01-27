@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+
+const posts = (await getCollection("archive")).sort(
+(a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0)
+);
+const fmt = (d?: Date) => d ? d.toLocaleDateString("en-GB", { year: "numeric", month: "short" }) : "";
+---
+
+
+<BaseLayout title="Archive · Ben Nicholson" description="Archive" currentPath="/archive">
+<section class="hero">
+<div class="kicker"><span class="dot" aria-hidden="true"></span><span>Archive</span></div>
+<h1>Archive</h1>
+<p class="lede">
+Older pieces and rescued writing from publications that have sadly disappeared from the web - props to friends and colleagues who produced Vérité, New Empress, et al.
+This isn’t a frequently-updated blog.
+</p>
+</section>
+
+
+<section class="section">
+<div class="list">
+{posts.map((p) => (
+<div class="row">
+<div class="meta">{fmt(p.data.date)}</div>
+<div>
+<div class="title"><a href={`/archive/${p.slug}/`}>{p.data.title}</a></div>
+<div class="desc">{p.data.description ?? ""}</div>
+</div>
+</div>
+))}
+</div>
+</section>
+</BaseLayout>

@@ -1,0 +1,37 @@
+---
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+
+const { title = "Ben Nicholson", description = "Portfolio", currentPath = "" } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<div class="container">
+<header class="header">
+<a class="brand" href="/">
+<span class="name">Ben Nicholson</span>
+<span class="tag">writing · criticism · projects</span>
+</a>
+<Nav currentPath={currentPath} />
+</header>
+
+
+<main id="content">
+<slot />
+</main>
+
+
+<Footer />
+</div>
+</body>
+</html>

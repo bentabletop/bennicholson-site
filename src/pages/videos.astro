@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+
+const videos = [
+{ title: "Video essay title", date: "2025", url: "https://example.com", desc: "Short description." },
+{ title: "Another video", date: "2024", url: "https://example.com", desc: "Short description." },
+];
+---
+
+
+<BaseLayout title="Videos · Ben Nicholson" description="Video essays" currentPath="/videos">
+<section class="hero">
+<div class="kicker"><span class="dot" aria-hidden="true"></span><span>Videos</span></div>
+<h1>Video essays</h1>
+<p class="lede">A small collection of video work.</p>
+</section>
+
+
+<section class="section">
+<div class="list">
+{videos.map((v) => (
+<div class="row">
+<div class="meta">{v.date}</div>
+<div>
+<div class="title"><a href={v.url} target="_blank" rel="noopener">{v.title}</a></div>
+<div class="desc">{v.desc}</div>
+</div>
+</div>
+))}
+</div>
+</section>
+</BaseLayout>

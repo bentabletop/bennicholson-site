@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About · Ben Nicholson" description="About" currentPath="/about">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="kicker">
+      <span class="dot" aria-hidden="true"></span>
+      <span>About</span>
+    </div>
+    <h1>About</h1>
+    <p class="lede">
+      Ben Nicholson is a writer, curator, and moderator specialising in film and artists’ moving image.
+    </p>
+  </section>
+
+  <!-- Long bio -->
+  <section class="section">
+    <div class="list">
+      <div class="row">
+        <div class="prose">
+          <p>
+            Ben’s words have been published by Sight & Sound, The Guardian, MUBI Notebook, Little White Lies, MAP Magazine, Hyperallergic, Quintessence Editions, and the British Film Institute among others. He is currently the chief shorts reviewer for The Film Verdict.
+          </p>
+
+          <p>
+            In 2019 Ben embarked upon his own independent curatorial project, ALT/KINO which aims to screen alternative voices and visions on UK screens. He is also the artistic director of the Alpha Film Festival which will have its inaugural edition in March 2023. Ben has previously been involved in programming at London Short Film Festival, Sheffield Doc/Fest and Open City Documentary Festival.
+          </p>
+
+          <p>
+            Ben is a member of the London Critics Circle and Online Film Critics Society.
+          </p>
+          <p>
+            He has moderated events and post-film Q&As on behalf of the Barbican Centre, Institute of Contemporary Arts, London Short Film Festival, Open City Documentary Festival, Czech Centre London, London East Asian Film Festival, Sheffield Doc/Fest and more.
+          </p>
+          <p>
+            From 2019-2021 Ben read for a Master of the Arts in Film and Screen Media at Birkbeck College achieving a distinction. His dissertation was on the subject of ‘films without images.’
+          </p>
+          <p>
+            In April 2022, Ben was on the European Competition Jury at the Go Short Film Festival in Nijmegen, Netherlands. Since 2022 he has been a member of the jury for the Arab Cinema Center’s Critics Awards for Arab Films.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / links -->
+  <section class="section">
+    <h2>Links</h2>
+    <div class="list">
+      <div class="row">
+        <div class="meta">Email</div>
+        <div>
+          <div class="title">
+           <a class="email" href="#" data-user="ben" data-domain="altkino.com">ben@altkino.com</a>
+<noscript>ben [at] altkino.com</noscript>
+          </div>
+          <div class="desc">
+            For writing, programming, moderation, and related enquiries.
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="meta">Elsewhere</div>
+        <div>
+          <div class="title elsewhere">
+            <a href="https://www.rottentomatoes.com/critics/ben-nicholson/movies" target="_blank" rel="noopener">RT</a>
+            <a href="https://www.metacritic.com/critic/ben-nicholson/?filter=movies" target="_blank" rel="noopener">Metacritic</a>
+            <a href="https://vimeo.com/brnicholson" target="_blank" rel="noopener">Vimeo</a>
+            <a href="https://www.instagram.com/brnicholson/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://letterboxd.com/BRNicholson/" target="_blank" rel="noopener">Letterboxd</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  document.querySelectorAll('a.email[data-user][data-domain]').forEach((a) => {
+    const user = a.getAttribute('data-user');
+    const domain = a.getAttribute('data-domain');
+    const addr = `${user}@${domain}`;
+    a.textContent = addr;
+    a.setAttribute('href', `mailto:${addr}`);
+  });
+</script>
+
+</BaseLayout>

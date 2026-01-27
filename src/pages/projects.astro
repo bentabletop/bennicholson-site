@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+
+const projects = [
+{ title: "Alpha Film Festival", url: "#", desc: "Add a 1–2 line description." },
+{ title: "SOJOURNS", url: "#", desc: "Add a 1–2 line description." },
+];
+---
+
+
+<BaseLayout title="Projects · Ben Nicholson" description="Projects" currentPath="/projects">
+<section class="hero">
+<div class="kicker"><span class="dot" aria-hidden="true"></span><span>Projects</span></div>
+<h1>Projects</h1>
+<p class="lede">Festivals, collaborations, and other work.</p>
+</section>
+
+
+<section class="section">
+<div class="list">
+{projects.map((p) => (
+<div class="row">
+<div class="meta">Project</div>
+<div>
+<div class="title"><a href={p.url}>{p.title}</a></div>
+<div class="desc">{p.desc}</div>
+</div>
+</div>
+))}
+</div>
+</section>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("archive");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const fmt = (d?: Date) =>
+  d ? d.toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" }) : "";
+---
+
+<BaseLayout
+  title={`${post.data.title} · Archive`}
+  description={post.data.description ?? "Archive post"}
+  currentPath={`/archive/${post.slug}/`}
+>
+  <section class="hero">
+    <div class="kicker"><span class="dot" aria-hidden="true"></span><span>Archive</span></div>
+    <h1>{post.data.title}</h1>
+    <p class="lede">
+      {post.data.description ?? ""}
+      {post.data.date ? <span> · {fmt(post.data.date)}</span> : null}
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="list">
+      <div class="row">
+        <div class="prose">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
