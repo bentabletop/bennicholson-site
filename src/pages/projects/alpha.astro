@@ -1,0 +1,210 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+type Film = {
+  title: string;
+  year?: string;
+  director?: string;
+  country?: string;
+  // If you want per-film images (option B)
+  image?: { src: string; alt: string; caption?: string };
+};
+
+type Programme = {
+  slug: string;
+  title: string;
+  intro: string;
+
+  // Choose one:
+  mode: "list" | "gallery";
+
+  // Option A: list + a couple of images to represent the programme
+  films: Film[];
+  images?: Array<{ src: string; alt: string; caption?: string }>;
+};
+
+const programmes: Programme[] = [
+  {
+    slug: "official-selection",
+    title: "Official Selection",
+    intro: "Twelve short films that used a variety of different styles, techniques, genres and even mediums to engage with the central theme of the Alpha Film Festival - ‘The Future.’",
+    mode: "list",
+    films: [
+      { title: "3 Dialogues About the Future", year: "2022", director: "Alina Manolache", country: "Romania" },
+      { title: "Agrilogistics", year: "2022", director: "Gerard Ortín Castellví", country: "UK/Spain" },
+      { title: "Aralkum", year: "2022", director: "Daniel Asadi Faezi, Mila Zhluktenko", country: "Uzbekistan/Germany" },
+      { title: "The Arrival of Aliens", year: "2021", director: "Guan Tian, Lin Junjie", country: "China" },
+      { title: "Brutalia, Days of Labour", year: "2021", director: "Manolis Mavris", country: "Greece/Belgium" },
+      { title: "The Future Isn't What It Used To Be", year: "2021", director: "Adeyemi Michael", country: "UK" },
+      { title: "How to Disappear", year: "2020", director: "TOTAL REFUSAL", country: "Austria" },
+      { title: "Persona", year: "2022", director: "Sujin Moon", country: "South Korea" },
+      { title: "S.O.S", year: "2021", director: "Sarah Hafner", country: "France" },
+      { title: "Successful Thawing of Mr. Moro", year: "2021", director: "Jerry Carlsson", country: "Sweden" },
+      { title: "The Unborn", year: "2022", director: "Thomas Frank", country: "Germany" },
+      { title: "Zombies", year: "2019", director: "Baloji", country: "Democratic Republic of Congo, Belgium" },
+    ],
+    images: [
+      // Put images in /public/projects/alpha/…
+      { src: "/projects/alpha/official-selection-1.jpg", alt: "Still from 3 Dialogues About the Future", caption: "Still from <em>3 Dialogues About the Future</em>." },
+      { src: "/projects/alpha/official-selection-2.jpg", alt: "Still from Zombies", caption: "Still from <em>Zombies</em>." },
+    ],
+  },
+
+  {
+    slug: "present-is-prologue",
+    title: "Programme 1: Present is Prologue",
+    intro: "A themed shorts programme of films that use a variety of different perspectives to create linkages that cast our present – or indeed, our future – as histories to be mined and excavated.",
+    mode: "list",
+    films: [
+      { title: "Urth", year: "2016", director: "Ben Rivers", country: "UK" },
+      { title: "Scientists now discover new evidence to reconstruct the ecology of A.D.2021", year: "2021", director: "Wenqing Yao", country: "China" },
+      { title: "Without Friction", year: "2018", director: "Timo Bredenberg", country: "Finland" },
+      { title: "Red Gaia", year: "2022", director: "Udesh Chetty", country: "India" },
+      { title: "World of Tomorrrow", year: "2015", director: "Don Hertzfeldt", country: "USA" },
+      { title: "The World After: Visions of the Deep Past", year: "2020", director: "David Blandy", country: "UK" },
+    ],
+        images: [
+       { src: "/projects/alpha/present-is-prologue-01.webp", alt: "Still from The World After: Visions of the Deep Past", caption: "Still from <em>The World After: Visions of the Deep Past</em>." },
+      { src: "/projects/alpha/present-is-prologue-02.jpg", alt: "Still from Urth", caption: "Still from <em>Urth</em>." },
+    ],
+  },
+
+   {
+    slug: "behold-this-strange-intelligence",
+    title: "Programme 2: Behold This Strange Intelligence",
+    intro: "A themed shorts programme that engages in several ways with notions of artificial intelligence, from fiction shorts that envisage the complexities of non-human intelligence to shorts with AI input and collaboration.",
+    mode: "list",
+    films: [
+      { title: "Drone", year: "2022", director: "Sean Buckelew", country: "USA" },
+      { title: "I Am", year: "2021", director: "Jerry Hoffman", country: "Germany" },
+      { title: "Forever", year: "2021", director: "Mitch McGlockin", country: "USA" },
+      { title: "All Her Beautiful Green Remains in Tears", year: "2018", director: "Amy Cutler", country: "UK" },
+      { title: "This Desolate Shore", year: "2022", director: "Chris Peters", country: "USA" },
+    ],
+        images: [
+       { src: "/projects/alpha/behold-this-strange-intelligence-01.jpeg", alt: "Still from The World After: Visions of the Deep Past", caption: "Still from <em>The World After: Visions of the Deep Past</em>." },
+      { src: "/projects/alpha/behold-this-strange-intelligence-02.jpg", alt: "Still from Urth", caption: "Still from <em>Urth</em>." },
+    ],
+  },
+
+  {
+    slug: "kings-of-infinite-space",
+    title: "Programme 3: Kings of Infinite Space",
+    intro: "A shorts programme exploring the boundaries between cinema and video games. Consisting primarily of films made in-game environments – machinima – the shorts in this programme will often probe the societies reflected by our cultural creations.",
+    mode: "list",
+    films: [
+      { title: "Onlookers", year: "2021", director: "Steffanie Padilla", country: "USA" },
+      { title: "The Voice in the Hollow", year: "2022", director: "Miguel Ortega", country: "USA" },
+      { title: "99 Problems [Wasted]", year: "2014", director: "Georgie Roxby Smith", country: "USA" },
+      { title: "Counter-Charge", year: "2015", director: "Alex Hovet", country: "USA" },
+      { title: "Rock, Star, North", year: "2021", director: "Calum Rodger", country: "UK" },
+      { title: "Heavy Thoughts", year: "2019", director: "Jonne Hansson", country: "Sweden" },
+      { title: "Martin Cries", year: "2017", director: "Jonathan Vinel", country: "France" },
+    ],
+        images: [
+       { src: "/projects/alpha/kings-of-infinite-spae-01.png", alt: "Still from Counter-Charge", caption: "Still from <em>Counter-Charge</em>." },
+      { src: "/projects/alpha/kings-of-infinite-spae-02.jpg", alt: "Still from Martin Cries", caption: "Still from <em>Martin Cries</em>." },
+    ],
+  },
+];
+
+const formatFilm = (f: Film) => {
+  const bits = [f.year, f.director, f.country].filter(Boolean);
+  return bits.length ? `(${bits.join(" · ")})` : "";
+};
+---
+
+<BaseLayout
+  title="Alpha Film Festival · Ben Nicholson"
+  description="Alpha Film Festival"
+  currentPath="/projects/alpha"
+>
+  <section class="hero">
+    <div class="kicker">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Project</span>
+    </div>
+    <h1>Alpha Film Festival</h1>
+    <p class="lede">
+      The <a href="https://milc.medium.com/alpha-film-festival-programme-announcement-ae691ccba9bd">Alpha Film Festival</a> took place entirely within the MILC Metaverse in March 2023. 
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="list">
+      <div class="row">
+        <div class="prose">
+          <p>
+            In 2023 I undertook the role of artistic director for the the first-ever metaverse film festival, the Alpha Film Festival. This role involved the curation of all of the 30 films that screened as part of the festival’s four sections - the 12 films of the Official Selection and the 18 films that comprised three themed programmes titled ‘Present is Prologue’, ‘Behold This Strange Intelligence’ and ‘Kings of Infinite Space.’
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <nav class="alpha-jumps" aria-label="Alpha programmes">
+  <a href="#official-selection">Official Selection</a>
+  <a href="#present-is-prologue">Present is Prologue</a>
+  <a href="#behold-this-strange-intelligence">Behold This Strange Intelligence</a>
+  <a href="#kings-of-infinite-space">Kings of Infinite Space</a>
+</nav>
+
+  {programmes.map((p) => (
+    <section class="section" id={p.slug}>
+      <h2>{p.title}</h2>
+
+      <div class="list">
+        <div class="row">
+          <div class="prose">
+            <p>{p.intro}</p>
+
+            {p.mode === "list" ? (
+              <>
+                <ul>
+                  {p.films.map((f) => (
+                    <li>
+                      <strong>{f.title}</strong> <span style="opacity:.9">{formatFilm(f)}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {p.images?.length ? (
+                  <div class="figure-grid">
+                    {p.images.slice(0, 2).map((img) => (
+                      <figure>
+                        <img src={img.src} alt={img.alt} loading="lazy" />
+                        {img.caption ? <figcaption set:html={img.caption} /> : null}
+                      </figure>
+                    ))}
+                  </div>
+                ) : null}
+              </>
+            ) : (
+              <>
+                <div class="figure-grid">
+                  {p.films
+                    .filter((f) => f.image)
+                    .map((f) => (
+                      <figure>
+                        <img src={f.image!.src} alt={f.image!.alt} loading="lazy" />
+                        {f.image!.caption ? <figcaption set:html={f.image!.caption!} /> : null}
+                      </figure>
+                    ))}
+                </div>
+
+                {/* In gallery mode, you may still want the film list beneath */}
+                <ul>
+                  {p.films.map((f) => (
+                    <li>
+                      <strong>{f.title}</strong> <span style="opacity:.9">{formatFilm(f)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+</BaseLayout>

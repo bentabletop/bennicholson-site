@@ -1,11 +1,29 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-
 const videos = [
-{ title: "Video essay title", date: "2025", url: "https://example.com", desc: "Short description." },
-{ title: "Another video", date: "2024", url: "https://example.com", desc: "Short description." },
+  {
+    title: "Video essay: Power at Your Fingertips",
+    date: "2020",
+    url: "https://vimeo.com/423548251?fl=pl&fe=ti",
+    desc: "A Videographic ‘The Go-Between’ PechaKucha.",
+  },
+  {
+    title: "Video essay: Man's Dominion",
+    date: "2020",
+    url: "https://vimeo.com/423766481?fl=pl&fe=ti",
+    desc: "An epigraphic video essay about Mani Kaul's Uski Roti.",
+  },
+  {
+    title: "the tonic of battersea park",
+    date: "2023",
+    url: "https://vimeo.com/796997574",
+    desc: "What would Henry David Thoreau have made of London's Battersea Park? This combination of an AI script and the procedurally-generated landscapes of Proteus seeks to find out, kind of.",
+  },
 ];
+
+// sort newest first
+videos.sort((a, b) => Number(b.date) - Number(a.date));
 ---
 
 

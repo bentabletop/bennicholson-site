@@ -1,0 +1,172 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Sojourns · Ben Nicholson"
+  description="Sojourns — a printed publication (2019)."
+  currentPath="/projects/sojourns"
+>
+  <section class="hero">
+    <div class="kicker">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Project</span>
+    </div>
+    <h1>Sojourns</h1>
+    <p class="lede">
+      SOJOURNS was a 40-page, colour risograph printed publication, published in 2019.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="list">
+      <div class="row">
+        <div class="prose sojourns-wrap">
+          <div class="sojourns-grid">
+            <div class="sojourns-collage" aria-label="Sojourns publication images">
+              <img
+                class="c1"
+                src="/projects/sojourns/sojourns-1.webp"
+                alt="Sojourns publication cover"
+                loading="lazy"
+              />
+              <img
+                class="c2"
+                src="/projects/sojourns/sojourns-2.webp"
+                alt="Sojourns publication interior detail"
+                loading="lazy"
+              />
+              <img
+                class="c3"
+                src="/projects/sojourns/sojourns-3.webp"
+                alt="Sojourns publication spread"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="sojourns-copy">
+              <p>
+                Design was by{" "}
+                <a
+                  href="https://lukemerryweather.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Luke Merryweather
+                </a>
+                , with printing by{" "}
+                <a
+                  href="https://www.jumbo-press.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Jumbo Press
+                </a>
+                . It was edited by <strong>Ben Nicholson</strong> and{" "}
+                <strong>Matt Turner</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Layout */
+    .sojourns-grid{
+      display:grid;
+      grid-template-columns: 360px 1fr;
+      gap: 28px;
+      align-items: start; /* collage stays anchored */
+    }
+
+    /* Collage */
+    .sojourns-collage{
+      position: relative;
+      width: 360px;
+      height: 360px;
+      margin-bottom: 40px; /* ensures list container encloses collage */
+    }
+
+    .sojourns-wrap{
+      padding-bottom: 40px; /* breathing room in the card */
+    }
+
+    .sojourns-collage img{
+      position:absolute;
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: var(--panel);
+    }
+
+    .sojourns-collage img.c1{ left: 0; top: 0; transform: rotate(-2deg); }
+    .sojourns-collage img.c2{ left: 110px; top: 70px; transform: rotate(2deg); }
+    .sojourns-collage img.c3{ left: 55px; top: 170px; transform: rotate(-1deg); }
+
+    /* Right-hand copy: vertically centred */
+    .sojourns-copy{
+      align-self: stretch;       /* ← KEY: make this column fill the grid row height */
+  display: flex;
+  align-items: center;       /* vertical centre within the stretched height */
+  justify-content: center;   /* keep your centred look */
+  text-align: center;
+      padding-top: 12px;        /* optical nudge (optional) */
+
+      max-width: 52ch;
+      margin: 0 auto;
+      font-size: 20px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .sojourns-copy p{
+      margin: 0; /* prevents default margins from shifting centring */
+    }
+
+    .sojourns-copy a{
+      color: var(--accent4);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+      font-weight: 800;
+    }
+
+    .sojourns-copy strong{
+      color: var(--text);
+      font-weight: 900;
+    }
+
+    /* Responsive */
+    @media (max-width: 820px){
+      .sojourns-grid{
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .sojourns-collage{
+        margin: 0 auto 24px;
+        width: 320px;
+        height: 320px;
+      }
+
+      .sojourns-collage img{
+        width: 210px;
+        height: 210px;
+        box-shadow: 5px 5px 0 var(--line);
+      }
+
+      .sojourns-collage img.c2{ left: 95px; top: 60px; }
+      .sojourns-collage img.c3{ left: 45px; top: 150px; }
+
+      .sojourns-copy{
+        font-size: 18px;
+        padding-top: 0;
+      }
+    }
+  </style>
+</BaseLayout>

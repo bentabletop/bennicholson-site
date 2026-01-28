@@ -305,6 +305,26 @@ h1{
   }
 }
 
+.alpha-jumps{
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.alpha-jumps a{
+  display: inline-block;
+  padding: 8px 12px;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  box-shadow: 3px 3px 0 var(--line);
+  font-weight: 700;
+}
+.alpha-jumps a:hover{
+  transform: translate(-1px,-1px);
+  text-decoration: none;
+}
+
 @media (max-width: 640px){
   .prose .figure-grid{
     grid-template-columns:1fr;
